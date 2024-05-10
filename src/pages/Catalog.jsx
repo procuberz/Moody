@@ -8,55 +8,79 @@ import Cart from "../components/Cart";
 import Product1 from "../images/product1.png";
 import { default as Btn } from "../components/Button";
 import { Context } from "../context/index";
+import { Helmet } from "react-helmet";
 
 const Catalog = () => {
     const [IsShow, setIsShow] = useState(false);
 
- const {ProductsData} = useContext(Context);
+    const { ProductsData } = useContext(Context);
 
-const {Products, setProducts} = useState([]);
+    const [Products, setProducts] = useState([]);
+
+    const [IsEmpty, setIsEmpty] = useState(true);
 
     const handleFilter = () => setIsShow(prev => !prev);
 
-const handleProducts = () => {
-    setProducts(() => ProductsData && ProductsData?.lenght ?
-    ProductsData : []
-) 
-}
+    const handleProducts = () => {
+        setProducts(() => ProductsData && ProductsData?.length ?
+            ProductsData : []
+        )
+    }
 
+    const handleShopBy = e => {
+        const value = e.target.dataset.shopBy;
 
-const handleShopBy = e => {
-  const value = e.target.dataset.shopBy;
+        const products = ProductsData?.filter(item => {
 
-  ProductsData.map(product => {
-  const filtered = product.category?.shopBy?.filter(item => {
-    return item.includes(value)
-  })
-  setProducts(filtered)
-})
-  console.log(filtered);
-}
+            if (item?.category?.shopBy?.includes(
+                value
+            )) {
+                return item;
+            }
+        })
 
+        setProducts(() => products && products.length ? [...products] : [])
+    }
 
-useEffect(() => {
-    setProducts(() => ProductsData && ProductsData?.lenght ? 
-ProductsData : []
-)
-}, [ProductsData?.lenght])
+    const handleGender = e => {
+        const value = e.target.value;
+
+        const products = ProductsData?.filter(item => {
+            if (item?.category?.gender?.includes(
+                value
+            )) {
+                return item;
+            }
+        })
+
+        setProducts(() => products && products.length ? [...products] : [])
+    }
+
+    useEffect(() => {
+        setProducts(() => ProductsData && ProductsData?.length ?
+            ProductsData : []
+        )
+    }, [ProductsData?.length])
 
     const product = Products?.map((product, i) => {
         return <Fragment key={i}>
             <Cart href={`/catalog/product/${product.id}`}
-         type={"product"} 
-         vertical image={product.image} 
-         title={product.title}
-          colors={[product.category?.colors]} 
-          price={product.price} />
-          </Fragment> 
-    })  
-    
+                type={"product"}
+                vertical
+                image={product.image}
+                title={product.title}
+                colors={product.category?.colors}
+                price={product.price}
+            />
+        </Fragment>
+    })
+
+
     return (
         <Fragment>
+            <Helmet>
+                <title>Moody - Catalog</title>
+            </Helmet>
             <Breadcrumb />
             <section className="Sales">
                 <Container>
@@ -95,23 +119,23 @@ ProductsData : []
 
                                 <ul className={`list-none Products__aside-list`}>
                                     <li className={"active"}>
-                                        <Title bodyText={'p'} className={`Products__aside-text`}onClick ={ handleShopBy}  data-shop-by={"Bedroom"} >Bedroom</Title>
+                                        <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"Bedroom"}>Bedroom</Title>
                                     </li>
 
                                     <li>
-                                        <Title bodyText={'p'} className={`Products__aside-text`}>living room</Title>
+                                        <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"Living room"}>living room</Title>
                                     </li>
 
                                     <li>
-                                        <Title bodyText={'p'} className={`Products__aside-text`}>child room</Title>
+                                        <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"Child room"}>child room</Title>
                                     </li>
 
                                     <li>
-                                        <Title bodyText={'p'} className={`Products__aside-text`}>bathroom</Title>
+                                        <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"Bathroom"}>bathroom</Title>
                                     </li>
 
                                     <li>
-                                        <Title bodyText={'p'} className={`Products__aside-text`}>Outdoor</Title>
+                                        <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"Outdoor"}>Outdoor</Title>
                                     </li>
                                 </ul>
                             </div>
@@ -122,17 +146,15 @@ ProductsData : []
                                 <ul className={`list-none Products__aside-list`}>
 
                                     <li>
-                                        <Title bodyText={'p'} className={`Products__aside-text`}>Conscious</Title>
+                                        <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"Conscious"}>Conscious</Title>
                                     </li>
 
                                     <li>
-                                        <Title bodyText={'p'} className={`Products__aside-text`}>premium
-                                            quality</Title>
+                                        <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"Premium Quality"}>premium quality</Title>
                                     </li>
 
                                     <li>
-                                        <Title bodyText={'p'} className={`Products__aside-text`}>classic
-                                            collection</Title>
+                                        <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"Classic Collection"}>classic collection</Title>
                                     </li>
                                 </ul>
                             </div>
@@ -140,19 +162,21 @@ ProductsData : []
                             <div className="Products__aside-item">
                                 <Typography.Title className="Products__aside-title"
                                     level={4}>gender</Typography.Title>
-                                <ul className={`list-none Products__aside-list`}>
+                                <Checkbox.Group>
+                                    <ul className={`list-none Products__aside-list`}>
 
-                                    <li>
-                                        <Checkbox value={"Man"}>
-                                            <Title bodyText={'p'} className={`Products__aside-text`}>Man</Title>
-                                        </Checkbox>
-                                    </li>
-                                    <li>
-                                        <Checkbox value={"Woman"}>
-                                            <Title bodyText={'p'} className={`Products__aside-text`}>woman</Title>
-                                        </Checkbox>
-                                    </li>
-                                </ul>
+                                        <li>
+                                            <Checkbox value={"Man"} onChange={handleGender}>
+                                                <Title bodyText={'p'} className={`Products__aside-text`}>Man</Title>
+                                            </Checkbox>
+                                        </li>
+                                        <li>
+                                            <Checkbox value={"Woman"} onChange={handleGender}>
+                                                <Title bodyText={'p'} className={`Products__aside-text`}>woman</Title>
+                                            </Checkbox>
+                                        </li>
+                                    </ul>
+                                </Checkbox.Group>
                             </div>
 
                             <div className="Products__aside-item">
@@ -243,18 +267,18 @@ ProductsData : []
                                     <Btn className={`Products__filters-red`} secondary>
                                         <Title bodyText={"p"}>Models</Title>
                                     </Btn>
-                                    <Btn secondary onClick={handleProducts} > 
+                                    <Btn secondary onClick={handleProducts}>
                                         <Title bodyText={"p"}>products</Title>
                                     </Btn>
 
                                 </div>
                             </Flex>
 
-                          {
-                          Products.lenght > 0 ? <Flex gap={24} wrap={"wrap"}>
-                          {product}
-                          </Flex> : <Title bodyTExt={"P"}>Empty</Title>
-                          }
+                            {
+                                Products.length > 0 ? <Flex gap={24} wrap={"wrap"}>
+                                    {product}
+                                </Flex> : <Title bodyText={"p"}>Empty</Title>
+                            }
 
                             <div className="Products__buttons">
                                 <Btn primary>load more products</Btn>

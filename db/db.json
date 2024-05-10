@@ -4,6 +4,10 @@
       "id": 1,
       "image": "/assets/images/product3-0.png",
       "title": "Checked Duvet Cover Set",
+      "colors": [
+        "brown",
+        "green-secondary"
+      ],
       "price": 24,
       "sizes": [
         {
@@ -21,11 +25,8 @@
       "top": true,
       "quantity": 1,
       "category": {
-        "shopBy": [
-          "Living Room",
-          "Bedroom",
-          "Bathroom"
-        ],
+
+        "shopBy": ["Living Room","Bedroom", "Bathroom"],
         "gender": "Man",
         "colors": [
           "brown",
@@ -37,6 +38,9 @@
       "id": 2,
       "image": "/assets/images/product2.png",
       "title": "Checked Duvet Cover Set",
+      "colors": [
+        "grey"
+      ],
       "price": 24,
       "sizes": [
         {
@@ -50,14 +54,12 @@
       ],
       "description": "Light khaki green/white checks",
       "stars": 4,
+      "gender": "Woman",
       "top": false,
       "quantity": 1,
       "category": {
-        "shopBy": [
-          "Living Room",
-          "Child room",
-          "Conscious"
-        ],
+
+        "shopBy": ["Living Room","Child Room", "Outdoor"],
         "gender": "Woman",
         "colors": [
           "grey"
@@ -86,7 +88,15 @@
       "stars": 4,
       "gender": "Man",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Bedroom","Child Room", "Outdoor"],
+        "gender": "Man",
+        "colors": [
+          "orange"
+        ]
+      }
     },
     {
       "id": 4,
@@ -110,15 +120,22 @@
       "stars": 4,
       "gender": "Woman",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Bedroom","Living Room", "Outdoor"],
+        "gender": "Woman",
+        "colors": [
+          "grey"
+        ]
+      }
     },
     {
       "id": 5,
       "image": "/assets/images/product5.png",
       "title": "Checked Duvet Cover Set",
       "colors": [
-        "yellow",
-        "grey"
+        "yellow", "grey"
       ],
       "price": 24,
       "sizes": [
@@ -135,7 +152,16 @@
       "stars": 4,
       "gender": "Man",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Bedroom","Living Room", "Child Room"],
+        "gender": "Man",
+        "colors": [
+          "grey",
+          "yellow"
+        ]
+      }
     },
     {
       "id": 6,
@@ -159,7 +185,15 @@
       "stars": 4,
       "gender": "Man",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Bedroom","Outdoor", "Child Room"],
+        "gender": "Man",
+        "colors": [
+          "lightbrown"
+        ]
+      }
     },
     {
       "id": 7,
@@ -184,7 +218,16 @@
       "stars": 4,
       "gender": "Woman",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Bedroom","Outdoor", "Living Room"],
+        "gender": "Woman",
+        "colors": [
+          "brown",
+          "lightbrown"
+        ]
+      }
     },
     {
       "id": 8,
@@ -208,16 +251,22 @@
       "stars": 4,
       "gender": "Woman",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Child Room","Outdoor", "Living Room"],
+        "gender": "Woman",
+        "colors": [
+          "grey"
+        ]
+      }
     },
     {
       "id": 9,
       "image": "/assets/images/product9.png",
       "title": "Checked Duvet Cover Set",
       "colors": [
-        "pink",
-        "lightgreen",
-        "grey"
+        "pink", "lightgreen", "grey"
       ],
       "price": 24,
       "sizes": [
@@ -234,15 +283,24 @@
       "stars": 4,
       "gender": "Man",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Child Room","Outdoor", "Bathroom"],
+        "gender": "Man",
+        "colors": [
+          "pink", 
+          "lightgreen", 
+          "grey"
+        ]
+      }
     },
     {
       "id": 10,
       "image": "/assets/images/product10.png",
       "title": "Checked Duvet Cover Set",
       "colors": [
-        "brown",
-        "grey"
+        "brown", "grey"
       ],
       "price": 24,
       "sizes": [
@@ -259,16 +317,23 @@
       "stars": 4,
       "gender": "Woman",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Living Room","Outdoor", "Bathroom"],
+        "gender": "Woman",
+        "colors": [
+          "brown", 
+          "grey"
+        ]
+      }
     },
     {
       "id": 11,
       "image": "/assets/images/product11.png",
       "title": "Checked Duvet Cover Set",
       "colors": [
-        "march",
-        "grey",
-        "lightbrown"
+        "march", "grey", "lightbrown"
       ],
       "price": 24,
       "sizes": [
@@ -285,16 +350,22 @@
       "stars": 5,
       "gender": "Woman",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Living Room","Bathroom", "Child Room"],
+        "gender": "Woman",
+        "colors": [
+          "march", "grey", "lightbrown"
+        ]
+      }
     },
     {
       "id": 12,
       "image": "/assets/images/product12.png",
       "title": "Checked Duvet Cover Set",
       "colors": [
-        "lightbrown",
-        "march",
-        "grey"
+        "lightbrown", "march", "grey"
       ],
       "price": 24,
       "sizes": [
@@ -311,7 +382,15 @@
       "stars": 4,
       "gender": "Man",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Living Room","Bedroom", "Child Room"],
+        "gender": "Man",
+        "colors": [
+          "lightbrown", "march", "grey"
+        ]
+      }
     },
     {
       "id": 13,
@@ -336,7 +415,16 @@
       "stars": 2,
       "gender": "Woman",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Living Room","Bedroom", "Child Room"],
+        "gender": "Woman",
+        "colors": [
+          "brown",
+        "green-secondary"
+        ]
+      }
     },
     {
       "id": 14,
@@ -360,7 +448,15 @@
       "stars": 4,
       "gender": "Woman",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Outdoor","Bedroom", "Child Room"],
+        "gender": "Woman",
+        "colors": [
+          "brown"
+        ]
+      }
     }
   ],
   "blogs": [

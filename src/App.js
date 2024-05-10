@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Container from "./components/container";
-import {Button, Flex} from "antd";
+import { Button, Flex } from "antd";
 import Logo from "./components/logo"
 import { IoMdSearch } from "react-icons/io"
 import { LuUser } from "react-icons/lu";
@@ -17,10 +17,27 @@ import Bag from "./pages/Busket";
 import NotFound from "./pages/NotFound";
 import Saved from "./pages/Saved";
 import Input from "./components/Input";
+import { useCart } from "react-use-cart";
+import { Helmet } from "react-helmet";
+import Ogimage  from "./images/advertising-1.png"
 
 const App = () => {
+    const { totalUniqueItems } = useCart();
+
     return (
         <Fragment>
+            <Helmet>
+                <meta name="description" content="Moody Store beta project"></meta>
+            </Helmet>
+
+            <meta name="Keywords" content="Moody, Moody store, Moody studio, Online market"/>
+
+            <meta property="og:title" content="Moody Studio"/>
+            <meta property="og:description" content="Moody Store beta project"/>
+            <meta property="og:image" content={Ogimage}/>
+            <meta property="og:url" content={window.location.href}/>
+            <meta property="og:type" content="website"/>
+
             <header className="header">
                 <Container>
                     <Flex
@@ -38,14 +55,14 @@ const App = () => {
                             </Flex>
                             <Button icon={<LuUser />} />
                             <Button icon={<TbShoppingBag />} href={"/bag"} className={`bag`}>
-                                <span className={`bag__counter`}>3</span>
+                                <span className={`bag__counter`}>{totalUniqueItems}</span>
                             </Button>
                             <Button icon={<IoHeartOutline />} href={"/saved"} />
                         </Flex>
                     </Flex>
 
                     <nav className="header__menu">
-                        
+
                         <Link to={"/"} className="header__menu-link">Home</Link>
                         <Link to={"/catalog/"} className="header__menu-link">Catalog</Link>
                         <Link to={"/bag/"} className="header__menu-link">Bag</Link>
@@ -62,15 +79,15 @@ const App = () => {
 
                     <Route path="/catalog/product/:id/" element={<Product />} />
 
-                    <Route path={"/bag/"} element={<Bag />}  />
+                    <Route path={"/bag/"} element={<Bag />} />
 
-                    <Route path={"*"} element={<NotFound />}  />
+                    <Route path={"*"} element={<NotFound />} />
 
-                    <Route path={"/saved/"} element={<Saved />}  />
+                    <Route path={"/saved/"} element={<Saved />} />
                 </Routes>
             </Content>
 
-            <Footer/>
+            <Footer />
         </Fragment>
     )
 }
